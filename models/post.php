@@ -175,13 +175,14 @@ class JSON_API_Post {
 
         $response["guide_parts"]= array();
         $count = 0;
+        ksort($meta);
         foreach ($meta as $key => $data) {
           //print_r($data);
           //print_r($key);
           //Check to se if any of the keys contains _Guide_post_steps_, if not 0 display the content
           if (substr_count($key, '_Guide_post_steps_') !== 0 || substr_count($key, '_Guide_post_desc') !== 0) {
-              $info = array($key => $data[0]);
-              array_push($response["guide_parts"], $info);
+            $info = array($key => $data[0]);
+            array_push($response["guide_parts"], $info);
           }
         }
         $this->content = $response;
